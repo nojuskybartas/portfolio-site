@@ -19,3 +19,10 @@ a {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer components {
+  .code-import {
+    @apply font-semibold text-purple-500;
+  }
+}
