@@ -13,6 +13,12 @@ a {
 
 * {
   box-sizing: border-box;
+  user-select: none;
+  -moz-user-select: none;
+}
+
+#code-underlay::after {
+  backdrop-filter: blur(2px)
 }
 
 
@@ -22,7 +28,7 @@ a {
 
 
 @layer components {
-  .code-import {
-    @apply font-semibold text-purple-500;
+  . {
+
   }
 }
