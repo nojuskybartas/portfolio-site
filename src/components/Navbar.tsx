@@ -4,14 +4,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon, faSun } from "@fortawesome/free-regular-svg-icons";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { useTheme } from "next-themes";
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 
 function Navbar() {
   const { theme, setTheme } = useTheme();
 
   return (
-    <nav className="sticky top-5 right-0 w-full h-14 flex justify-end pr-5 z-50">
-      <div className="w-fit h-full border-solid border-2 border-gray-500 dark:bg-purple-800 p-3 md:p-6 rounded-2xl flex space-x-2">
+    <nav className="sticky top-0 right-0 left-full p-5 w-fit h-fit z-50">
+      <div className="w-fit h-full border-solid border-2 border-gray-500 dark:bg-purple-800 p-3 md:px-4 rounded-2xl flex space-x-2">
         <NavItem
           icon={faMoon}
           onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
@@ -30,10 +30,22 @@ function NavItem({
   icon: IconDefinition;
   onClick?: Function;
 }) {
+  const controls = useAnimation();
+
+  const handleClick = () => {
+    controls.start({
+      scale: [1, 2, 2, 1, 1],
+      rotate: [0, 0, 180, 270, 360],
+      borderRadius: ["20%", "20%", "50%", "50%", "20%"],
+    });
+  };
+
   return (
     <motion.div
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
+      animate={controls}
+      onClickCapture={handleClick}
       className="w-fit h-full flex place-items-center cursor-pointer"
       onClick={() => {
         if (onClick) onClick();

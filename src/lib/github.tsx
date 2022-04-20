@@ -1,6 +1,8 @@
 export const getCodeData = async (pathname: String) => {
   const file = pathname === "/" ? "/index" : pathname;
-  const url = `https://raw.githubusercontent.com/nojuskybartas/portfolio-site/main/pages${file}.tsx`;
+  const url = `https://raw.githubusercontent.com/nojuskybartas/portfolio-site/main/src/pages${file}.tsx`;
+  console.log(url);
+  if (url.includes("_next")) return null;
   const res = await fetch(url);
   const codeData = await res.text();
   return codeData;

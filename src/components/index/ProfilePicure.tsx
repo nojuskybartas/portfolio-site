@@ -6,7 +6,7 @@ function ProfilePicure() {
   const radius = 100;
 
   return (
-    <div className="w-full flex place-content-center pt-[20vh]">
+    <div className="w-full h-fit flex place-content-center pt-[20vh]">
       <motion.div
         initial={{
           scale: 3,
@@ -82,7 +82,7 @@ function ProfilePicure() {
           />
         </svg>
         <img
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-2 w-fit h-fit object-cover rounded-full drop-shadow-4xl"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-2 w-full h-full object-cover rounded-full drop-shadow-4xl overflow-hidden"
           src={profileImg.src}
           alt="Bordered avatar"
         />
