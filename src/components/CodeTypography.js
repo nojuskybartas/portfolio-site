@@ -5,7 +5,7 @@ import useWindowDimensions from "../hooks/useWindowDimensions";
 
 // TODO: using framer motion might be a little overkill here
 
-const CodeTypography = ({ page }) => {
+export const CodeTypography = ({ page }) => {
   const [code, setCode] = useState("");
   const { isMobile } = useWindowDimensions();
 
@@ -17,6 +17,11 @@ const CodeTypography = ({ page }) => {
       const codeTypewritter = document.querySelector("typewritten-text");
       codeTypewritter.start();
     }, [3000]);
+
+    setTimeout(() => {
+      randomizeTypingDirection();
+      randomizeTypingInterval();
+    }, [10000]);
   }, []);
 
   useEffect(() => {
@@ -31,18 +36,43 @@ const CodeTypography = ({ page }) => {
     getCode();
   }, [isMobile]);
 
+  const randomizeTypingDirection = () => {
+    const codeTypewritter = document.querySelector("typewritten-text");
+    const randomTime = Math.floor(Math.random() * 30000);
+    const randomDelete = Math.floor(Math.random() * 2000);
+    setTimeout(() => {
+      codeTypewritter.reverse();
+      console.log("back");
+      setTimeout(() => {
+        codeTypewritter.reverse();
+        console.log("forw");
+        setTimeout(() => {
+          randomizeTypingDirection();
+        }, [20000]);
+      }, [randomDelete]);
+    }, [randomTime]);
+  };
+
+  const randomizeTypingInterval = () => {
+    const codeTypewritter = document.querySelector("typewritten-text");
+    const randomInterval = Math.floor(Math.random() * 300);
+    codeTypewritter.letterInterval = randomInterval;
+    const randomTime = Math.floor(Math.random() * 15000);
+    setTimeout(() => {
+      randomizeTypingInterval();
+    }, [randomTime]);
+  };
+
   return code ? (
     <motion.div
       initial={{ opacity: "0%" }}
       animate={{ opacity: "25%" }}
       transition={{ delay: 2 }}
-      className="w-screen h-screen lg:text-lg absolute top-0 left-0 p-2 md:p-10 contrast-125 blur-[0.5px] overflow-hidden"
+      className="w-screen h-full lg:text-lg absolute top-0 left-0 p-2 md:p-10 contrast-125 blur-[0.5px] overflow-hidden"
     >
-      <typewritten-text letter-interval="75" paused>
+      <typewritten-text letter-interval="30" paused>
         <Highlight className="language-typescript">{code}</Highlight>
       </typewritten-text>
     </motion.div>
   ) : null;
 };
-
-export default CodeTypography;

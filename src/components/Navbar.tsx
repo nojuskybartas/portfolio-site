@@ -6,7 +6,7 @@ import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { useTheme } from "next-themes";
 import { motion, useAnimation } from "framer-motion";
 
-function Navbar() {
+export function Navbar() {
   const { theme, setTheme } = useTheme();
 
   return (
@@ -20,8 +20,6 @@ function Navbar() {
     </nav>
   );
 }
-
-export default Navbar;
 
 function NavItem({
   icon,

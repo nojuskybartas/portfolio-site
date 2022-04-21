@@ -1,6 +1,6 @@
 import React from "react";
 
-function Info() {
+export function Info() {
   return (
     <>
       <h1 className="font-bold text-3xl z-0">Nojus Kybartas</h1>
@@ -10,5 +10,3 @@ function Info() {
     </>
   );
 }
-
-export default Info;

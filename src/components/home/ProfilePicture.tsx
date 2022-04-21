@@ -2,40 +2,36 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import profileImg from "../../assets/profile.png";
 
-function ProfilePicure() {
+export function ProfilePicture() {
   const radius = 100;
 
   return (
-    <div className="w-full h-fit flex place-content-center pt-[20vh]">
+    <div className="w-full h-full flex place-content-center pt-[20vh]">
       <motion.div
         initial={{
-          scale: 3,
+          scale: 0.4,
           y: "100%",
-          rotate: -720,
+          rotate: -420,
           filter: "brightness(80%)",
+          opacity: 0,
         }}
         animate={{
-          scale: 1.01,
+          scale: 0.9,
           y: 0,
           rotate: 0,
           filter: "brightness(100%)",
-        }}
-        transition={{
-          default: {
-            type: "spring",
-            duration: 1.5,
+          opacity: "100%",
+          transition: {
             delay: 1,
+            rotate: {
+              type: "spring",
+              damping: 8,
+              stiffness: 200,
+              duration: 0.5,
+            },
           },
-          filter: {
-            ease: "circOut",
-            duration: 0.8,
-          },
-          rotate: {
-            type: "spring",
-            damping: 8,
-            stiffness: 200,
-            duration: 0.5,
-            delay: 1,
+          transitionEnd: {
+            width: "fit-content",
           },
         }}
         className="w-fit h-fit relative p-2 z-10"
@@ -90,5 +86,3 @@ function ProfilePicure() {
     </div>
   );
 }
-
-export default ProfilePicure;

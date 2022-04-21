@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 
-function ScrollToTop() {
+export function ScrollToTop() {
   const topRef = useRef<null | HTMLDivElement>(null);
 
   useEffect(() => {
@@ -14,5 +14,3 @@ function ScrollToTop() {
 
   return <div ref={topRef} className="absolute top-0" />;
 }
-
-export default ScrollToTop;

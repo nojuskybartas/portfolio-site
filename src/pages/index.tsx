@@ -1,48 +1,41 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import ProfilePicure from "../components/index/ProfilePicure";
 import { motion } from "framer-motion";
-import Navbar from "../components/Navbar";
-import ScrollToTop from "../components/ScrollToTop";
-import Socials from "../components/index/Socials";
-import ProjectsSkillsToggle from "../components/index/ProjectsSkillsToggle";
-import { Parallax, ParallaxProvider } from "react-scroll-parallax";
-import CodeTypography from "../components/CodeTypography.js";
-import Info from "../components/index/Info";
+import { ScrollToTop, Navbar, CodeTypography } from "../components";
+import {
+  Socials,
+  ProfilePicture,
+  Info,
+  ProjectsSkillsToggle,
+} from "../components/home";
 
 const Home: NextPage = () => {
   return (
     <div className="w-full h-full relative pb-20">
-      <ParallaxProvider>
-        <ScrollToTop />
-        <Head>
-          <title>Nojus Kybartas: Home</title>
-          <meta name="Nojus Kybartas' portfolio" content="Home Page" />
-          <link rel="icon" href="/favicon.ico" />
-        </Head>
+      <ScrollToTop />
+      <Head>
+        <title>Nojus Kybartas: Home</title>
+        <meta name="Nojus Kybartas' portfolio" content="Home Page" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
 
-        <Navbar />
+      <Navbar />
 
-        <CodeTypography page="index.tsx" />
+      <CodeTypography page="index.tsx" />
 
-        <Parallax speed={8}>
-          <ProfilePicure />
-        </Parallax>
+      <ProfilePicture />
 
-        <Parallax speed={-1}>
-          <motion.div
-            initial={{ opacity: "0%", y: "100%" }}
-            animate={{ opacity: "100%", y: "0%" }}
-            transition={{ delay: 1.8 }}
-            className="w-full h-full flex flex-col 
+      <motion.div
+        initial={{ opacity: "0%", y: "100%" }}
+        animate={{ opacity: "100%", y: "0%" }}
+        transition={{ delay: 1.8, duration: 0.5 }}
+        className="w-full h-full flex flex-col py-8
             place-items-center space-y-2 overflow-x-hidden"
-          >
-            <Info />
-            <Socials />
-            <ProjectsSkillsToggle />
-          </motion.div>
-        </Parallax>
-      </ParallaxProvider>
+      >
+        <Info />
+        <Socials />
+        <ProjectsSkillsToggle />
+      </motion.div>
     </div>
   );
 };

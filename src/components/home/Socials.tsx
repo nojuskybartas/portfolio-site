@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import React from "react";
 import githubDark from "../../assets/icons/githubDark.png";
 import githubLight from "../../assets/icons/githubLight.png";
@@ -9,7 +8,7 @@ import linkedIn from "../../assets/icons/linkedin.png";
 import instagramRgb from "../../assets/icons/instagram_rgb.png";
 import Image, { StaticImageData } from "next/image";
 
-function Socials() {
+export function Socials() {
   return (
     <div className="w-fit h-fit p-5 space-x-5 flex">
       <SocialItem
@@ -31,9 +30,7 @@ function Socials() {
   );
 }
 
-export default Socials;
-
-const SocialItem = ({
+export const SocialItem = ({
   link,
   darkIcon,
   lightIcon,

@@ -3,11 +3,11 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
 
-function ProjectsSkillsToggle() {
+export function ProjectsSkillsToggle() {
   const [state, setState] = useState("skills");
 
   return (
-    <div className="w-4/5 max-w-md h-16 flex border-4 border-solid border-gray-400 dark:border-gray-700 rounded-xl space-x-1 p-1 z-0">
+    <motion.div className="w-4/5 max-w-md h-16 flex border-4 border-solid border-gray-400 dark:border-gray-700 rounded-xl space-x-1 p-1 z-0">
       <ToggleItem
         name="Skills"
         stateName="skills"
@@ -20,13 +20,11 @@ function ProjectsSkillsToggle() {
         currentState={state}
         onClick={() => setState("projects")}
       />
-    </div>
+    </motion.div>
   );
 }
 
-export default ProjectsSkillsToggle;
-
-function ToggleItem({
+export function ToggleItem({
   name,
   stateName,
   currentState,
