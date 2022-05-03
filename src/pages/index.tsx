@@ -3,8 +3,8 @@ import Head from "next/head";
 import { motion } from "framer-motion";
 import { ScrollToTop, Navbar, CodeTypography } from "../components";
 import {
-  Socials,
   ProfilePicture,
+  Socials,
   Info,
   ProjectsSkillsToggle,
 } from "../components/home";
@@ -23,16 +23,16 @@ const Home: NextPage = () => {
 
       <CodeTypography page="index.tsx" />
 
-      <ProfilePicture />
+      {/* <ProfilePicture /> */}
 
       <motion.div
         initial={{ opacity: "0%", y: "100%" }}
         animate={{ opacity: "100%", y: "0%" }}
-        transition={{ delay: 1.8, duration: 0.5 }}
+        transition={{ delay: 1.8 }}
         className="w-full h-full flex flex-col py-8
-            place-items-center space-y-2 overflow-x-hidden"
+            place-items-center space-y-2"
       >
-        <Info />
+        {/* <Info /> */}
         <Socials />
         <ProjectsSkillsToggle />
       </motion.div>

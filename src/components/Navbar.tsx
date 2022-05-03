@@ -10,14 +10,26 @@ export function Navbar() {
   const { theme, setTheme } = useTheme();
 
   return (
-    <nav className="sticky top-0 right-0 left-full p-5 w-fit h-fit z-50">
+    <motion.nav
+      initial={{ opacity: "0%" }}
+      animate={{
+        opacity: "100%",
+        scale: [1, 2, 2, 1, 1],
+        rotate: [0, 0, 180, 270, 360],
+        borderRadius: ["20%", "20%", "50%", "50%", "20%"],
+        transition: {
+          delay: 2.3,
+        },
+      }}
+      className="sticky top-0 right-0 left-full p-5 w-fit h-fit z-50"
+    >
       <div className="w-fit h-full border-solid border-2 border-gray-500 dark:bg-purple-800 p-3 md:px-4 rounded-2xl flex space-x-2">
         <NavItem
           icon={faMoon}
           onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
         />
       </div>
-    </nav>
+    </motion.nav>
   );
 }
 
@@ -32,9 +44,8 @@ function NavItem({
 
   const handleClick = () => {
     controls.start({
-      scale: [1, 2, 2, 1, 1],
-      rotate: [0, 0, 180, 270, 360],
-      borderRadius: ["20%", "20%", "50%", "50%", "20%"],
+      rotate: [90, 180, 270, 360],
+      transition: { duration: 0.3 },
     });
   };
 

@@ -2,25 +2,31 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
+import { Projects } from "./Projects";
+import { Skills } from "./Skills";
 
 export function ProjectsSkillsToggle() {
   const [state, setState] = useState("skills");
 
   return (
-    <motion.div className="w-4/5 max-w-md h-16 flex border-4 border-solid border-gray-400 dark:border-gray-700 rounded-xl space-x-1 p-1 z-0">
-      <ToggleItem
-        name="Skills"
-        stateName="skills"
-        currentState={state}
-        onClick={() => setState("skills")}
-      />
-      <ToggleItem
-        name="Projects"
-        stateName="projects"
-        currentState={state}
-        onClick={() => setState("projects")}
-      />
-    </motion.div>
+    <>
+      <motion.div className="w-4/5 max-w-lg h-16 flex border-4 border-solid border-gray-400 dark:border-gray-700 rounded-xl space-x-1 p-1 z-0">
+        <ToggleItem
+          name="Skills"
+          stateName="skills"
+          currentState={state}
+          onClick={() => setState("skills")}
+        />
+        <ToggleItem
+          name="Projects"
+          stateName="projects"
+          currentState={state}
+          onClick={() => setState("projects")}
+        />
+      </motion.div>
+      {/* <Projects /> */}
+      <Skills visible={state === "skills"} />
+    </>
   );
 }
 

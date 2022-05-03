@@ -6,17 +6,17 @@ export function ProfilePicture() {
   const radius = 100;
 
   return (
-    <div className="w-full h-full flex place-content-center pt-[20vh]">
+    <div className="w-full h-full flex place-content-center pt-[10vh]">
       <motion.div
         initial={{
           scale: 0.4,
           y: "100%",
-          rotate: -420,
+          rotate: -720,
           filter: "brightness(80%)",
           opacity: 0,
         }}
         animate={{
-          scale: 0.9,
+          scale: 1,
           y: 0,
           rotate: 0,
           filter: "brightness(100%)",
@@ -30,58 +30,15 @@ export function ProfilePicture() {
               duration: 0.5,
             },
           },
-          transitionEnd: {
-            width: "fit-content",
-          },
         }}
-        className="w-fit h-fit relative p-2 z-10"
+        className="w-60 h-60 z-10 rounded-full relative backgroundGradient p-[8px]"
       >
-        <svg
-          className="overflow-visible"
-          height={radius * 2}
-          width={radius * 2}
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <defs>
-            <motion.linearGradient
-              id="profilePictureGradient"
-              initial={{
-                gradientTransform: `rotate(-270)`,
-              }}
-              animate={{
-                gradientTransform: `rotate(270)`,
-              }}
-              transition={{
-                repeat: Infinity,
-                repeatType: "mirror",
-                ease: "easeInOut",
-                duration: 3,
-              }}
-            >
-              <stop offset="25%" stopColor="#5221A5" />
-              <stop offset="75%" stopColor="#AC94DA" />
-            </motion.linearGradient>
-          </defs>
-          <circle
-            fill="url(#profilePictureGradient)"
-            cx={radius}
-            cy={radius}
-            r={radius}
-          />
-          <circle
-            cx={radius}
-            cy={radius}
-            r={radius * 1.1}
-            stroke="url(#profilePictureGradient)"
-            strokeWidth="7"
-            fill="none"
-          />
-        </svg>
         <img
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-2 w-full h-full object-cover rounded-full drop-shadow-4xl overflow-hidden"
+          className="w-full h-full object-cover rounded-full drop-shadow-4xl overflow-hidden"
           src={profileImg.src}
           alt="Bordered avatar"
         />
+        <div className="absolute w-[90%] h-[90%] rounded-full ring-[6px] ring-white dark:ring-black top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
       </motion.div>
     </div>
   );

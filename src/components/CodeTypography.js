@@ -16,7 +16,7 @@ export const CodeTypography = ({ page }) => {
     setTimeout(() => {
       const codeTypewritter = document.querySelector("typewritten-text");
       codeTypewritter.start();
-    }, [3000]);
+    }, [5000]);
 
     setTimeout(() => {
       randomizeTypingDirection();
@@ -68,7 +68,7 @@ export const CodeTypography = ({ page }) => {
       initial={{ opacity: "0%" }}
       animate={{ opacity: "25%" }}
       transition={{ delay: 2 }}
-      className="w-screen h-full lg:text-lg absolute top-0 left-0 p-2 md:p-10 contrast-125 blur-[0.5px] overflow-hidden"
+      className="w-full h-fit lg:text-lg absolute top-0 left-0 p-2 md:p-10 contrast-125 blur-[.7px]"
     >
       <typewritten-text letter-interval="30" paused>
         <Highlight className="language-typescript">{code}</Highlight>

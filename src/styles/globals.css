@@ -17,10 +17,36 @@ a {
   -moz-user-select: none;
 }
 
-#code-underlay::after {
-  backdrop-filter: blur(2px)
+.backgroundGradient {
+  background: linear-gradient(58deg, #9c1da3, #6578e1, #db02e8, #646cea);
+  background-size: 800% 800%;
+
+  -webkit-animation: gradientAnimation 11s ease infinite;
+  -moz-animation: gradientAnimation 11s ease infinite;
+  -o-animation: gradientAnimation 11s ease infinite;
+  animation: gradientAnimation 11s ease infinite;
 }
 
+@-webkit-keyframes gradientAnimation {
+  0%{background-position:13% 0%}
+  50%{background-position:88% 100%}
+  100%{background-position:13% 0%}
+}
+@-moz-keyframes gradientAnimation {
+  0%{background-position:13% 0%}
+  50%{background-position:88% 100%}
+  100%{background-position:13% 0%}
+}
+@-o-keyframes gradientAnimation {
+  0%{background-position:13% 0%}
+  50%{background-position:88% 100%}
+  100%{background-position:13% 0%}
+}
+@keyframes gradientAnimation {
+  0%{background-position:13% 0%}
+  50%{background-position:88% 100%}
+  100%{background-position:13% 0%}
+}
 
 @tailwind base;
 @tailwind components;
@@ -28,7 +54,16 @@ a {
 
 
 @layer components {
-  . {
-
+  ::-webkit-scrollbar {
+    @apply hidden lg:inline w-2;
   }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-200 dark:bg-gray-800
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-400 dark:bg-gray-600 hover:bg-gray-500 dark:hover:bg-gray-700 rounded-sm
+  }
+
 }
